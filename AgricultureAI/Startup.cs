@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
 using AgricultureAI.Persistence;
 using AgricultureAI.Persistence.HigherLevel;
@@ -68,7 +69,13 @@ namespace AgricultureAI
         {
             // Testing Machine Learning:
             ModelInput sample = new ModelInput();
-            sample.ImageSource = @".\MachineLearning\PinnacleAlgorithm\TrainingImages\Healthy\DSC00027.JPG";
+            string url = @"https://firebasestorage.googleapis.com/v0/b/agricultureai-15ce0.appspot.com/o/IMG_6700.Jpeg?alt=media";
+            string destination = @"./MachineLearning/TempStorage/tempImage.png";
+            using (System.Net.WebClient client = new WebClient())
+            {
+                client.DownloadFile(new Uri(url), destination);
+            }
+            sample.ImageSource = destination;
             var predictionResult = MLModel.Predict(sample);
             Debug.Write($"ImageSource: {sample.ImageSource} \nPredicted Label value {predictionResult.Prediction} \nPredicted Label scores: [{String.Join(",", predictionResult.Score)}]\n");
 
