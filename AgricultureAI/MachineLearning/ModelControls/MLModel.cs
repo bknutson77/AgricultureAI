@@ -1,14 +1,13 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Text;
 using Microsoft.ML;
 
 /*
  * EXAMPLE USE:
- * ModelInput sample = new ModelInput();
- * sample.ImageSource = @".\MachineLearning\PinnacleAlgorithm\TrainingImages\Healthy\DSC00027.JPG";
- * var predictionResult = MLModel.Predict(sample);
+ * var predictionResult = MLModel.Predict(@".\MachineLearning\PinnacleAlgorithm\TrainingImages\Healthy\DSC00027.JPG");
  * Debug.Write($"Predicted Label value {predictionResult.Prediction} \nPredicted Label scores: [{String.Join(",", predictionResult.Score)}]\n");
  */
 
@@ -20,8 +19,22 @@ namespace MachineLearning
 
         // For more info on consuming ML.NET models, visit https://aka.ms/mlnet-consume
         // Method for consuming model in your app
-        public static ModelOutput Predict(ModelInput input)
+        public static ModelOutput Predict(String url)
         {
+            // Create new Model Input object:
+            ModelInput input = new ModelInput();
+
+            // Download and save a copy of the image (this is necessary for some reason):
+            string destination = @"./MachineLearning/TempStorage/tempImage.png";
+            using (System.Net.WebClient client = new WebClient())
+            {
+                client.DownloadFile(new Uri(url), destination);
+            }
+
+            // Set the input to the newly cached image:
+            input.ImageSource = destination;
+
+            // Predict and return prediction:
             ModelOutput result = PredictionEngine.Value.Predict(input);
             return result;
         }
