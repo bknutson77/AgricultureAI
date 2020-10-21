@@ -26,7 +26,7 @@ namespace AgricultureAI
             RestfulDBConnection.FIREBASE_URL = Configuration["FirebaseURL"];
 
             // Run Startup Tests:
-            RunStartupTests();
+            //RunStartupTests();
         }
 
         public IConfiguration Configuration { get; }

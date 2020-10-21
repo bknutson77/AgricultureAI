@@ -1,0 +1,30 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Login page";
+}
+
+<div class="text-center">
+    <div class="flexColumn">
+        <div class="card agAICard">
+            <div class="card-header agAICardHeader">Login</div>
+            <div class="card-body agAICardBody">
+                <div class="flexRow flexEndOverride formFlexWidth">
+                    <label>Username:</label>
+                    <input id="loginUsername" type="text" class="agAIInputText" />
+                </div>
+                <div class="flexRow flexEndOverride formFlexWidth">
+                    <label class="mt-1">Password:</label>
+                    <input id="loginPassword" type="text" class="agAIInputText mt-1" />
+                </div>
+                <div class="flexRow">
+                    <button id="loginGoBack" class="agAIButton" onclick="returnToLoginRegisterHome()">Go Back</button>
+                    <button id="loginSubmit" class="agAIButton">Login</button>
+                </div>
+                <div class="flexRow">
+                    <span id="loginErrorMessage" class="mt-1"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,46 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Login page";
+}
+
+<div class="text-center">
+    <div class="flexColumn">
+        <div class="card agAICard">
+            <div class="card-header agAICardHeader">Login</div>
+            <div class="card-body agAICardBody">
+                <div class="flexRow flexEndOverride formFlexWidth">
+                    <label>Name:</label>
+                    <input id="registerName" type="text" class="agAIInputText" />
+                </div>
+                <div class="flexRow flexEndOverride formFlexWidth">
+                    <label class="mt-1">Email:</label>
+                    <input id="registerEmail" type="text" class="agAIInputText mt-1" />
+                </div>
+                <div class="flexRow flexEndOverride formFlexWidth">
+                    <label class="mt-1">Occupation:</label>
+                    <input id="registerOccupation" type="text" class="agAIInputText mt-1" />
+                </div>
+                <div class="flexRow">
+                    <label class="mt-1">Are you a plant expert?:</label>
+                    <input id="registerPlantExpert" type="checkbox" class="agAIInputCheckbox"/>
+                </div>
+                <div class="flexRow flexEndOverride formFlexWidth">
+                    <label class="mt-1">Username:</label>
+                    <input id="registerUsername" type="text" class="agAIInputText mt-1" />
+                </div>
+                <div class="flexRow flexEndOverride formFlexWidth">
+                    <label class="mt-1">Password:</label>
+                    <input id="registerPassword" type="text" class="agAIInputText mt-1" />
+                </div>
+                <div class="flexRow">
+                    <button id="registerGoBack" class="agAIButton" onclick="returnToLoginRegisterHome()">Go Back</button>
+                    <button id="registerSubmit" class="agAIButton">Register</button>
+                </div>
+                <div class="flexRow">
+                    <span id="registerErrorMessage" class="mt-1"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

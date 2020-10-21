@@ -68,4 +68,86 @@ body {
   width: 100%;
   white-space: nowrap;
   line-height: 60px; /* Vertically center the text there */
+  background-color: black;
 }
+
+
+
+/* Website Background */
+.websiteBackground {
+    background-image: url("../resources/images/WebsiteBackground.jpg");
+    background-size: cover;
+}
+
+
+/* Global CSS */
+.flexRow {
+    display: flex;
+    flex-basis: auto;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+}
+.flexColumn {
+    display: flex;
+    flex-basis: auto;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+}
+.flexEndOverride {
+    justify-content: flex-end !important;
+}
+.formFlexWidth {
+    width: 355px !important;
+}
+
+.agAICard {
+    width: 500px;
+    border-radius: 50px !important;
+}
+.agAICardHeader {
+    background-color: black;
+    color: white;
+    border-top-left-radius: 50px !important;
+    border-top-right-radius: 50px !important;
+}
+.agAICardBody {
+    background-color: rgba(255, 255, 255, 0.8);
+    color: black;
+    border-radius: 50px !important;
+}
+
+.agAIButton {
+    width: 200px;
+    height: 50px;
+    background-color: rgba(0, 0, 255, 0.5);
+    color: white;
+    border: 2px solid aliceblue;
+    border-radius: 50px;
+    margin-top: 10px;
+    outline: none !important;
+}
+.agAIButton:hover {
+    background-color: rgba(0, 0, 255, 0.3);
+}
+
+.agAIInputText {
+    background-color: aliceblue;
+    border: 2px solid black;
+    border-radius: 50px;
+    outline: none !important;
+    margin-left: 5px;
+    padding: 5px;
+    text-align: center;
+}
+
+.agAIInputCheckbox {
+    width: 15px;
+    height: 15px;
+    margin-left: 5px;
+}
+
+
