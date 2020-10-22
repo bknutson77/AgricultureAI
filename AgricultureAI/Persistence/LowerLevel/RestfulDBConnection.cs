@@ -30,9 +30,10 @@ namespace AgricultureAI.Persistence
                 StreamReader reader = new StreamReader(dataStream);
                 value = reader.ReadToEnd();
             }
-
-            // Close and return.
             response.Close();
+
+            // Prettify response and return.
+            value = value.Replace("\"", "");
             return value;
         }
 

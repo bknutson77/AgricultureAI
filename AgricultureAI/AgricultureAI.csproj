@@ -59,6 +59,7 @@
 
   <ItemGroup>
     <Folder Include="MachineLearning\TempStorage\" />
+    <Folder Include="Website\resources\images\" />
   </ItemGroup>
 
 </Project>
