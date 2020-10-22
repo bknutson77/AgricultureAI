@@ -38,8 +38,12 @@ namespace AgricultureAI.Persistence.HigherLevel
             }
         }
 
-        public static bool CreateUser(String name, String email, String occupation, String plantExpert, String username, String password)
+        public static String AttemptRegister(String name, String email, String occupation, String plantExpert, String username, String password)
         {
+            if (TestIfUsernameAvailable(username) == "Unavailable")
+            {
+                return "Username Unavailable";
+            }
             try
             {
                 RestfulDBConnection.Store(username, "name", name);
@@ -49,13 +53,35 @@ namespace AgricultureAI.Persistence.HigherLevel
                 RestfulDBConnection.Store(username, "username", username);
                 RestfulDBConnection.Store(username, "password", password);
                 Debug.Write("Successfully created user " + username + ".\n");
-                return true;
+                return "Success";
             } 
             catch (Exception e)
             {
                 Debug.Write("Error creating user: " + e.Message + "\n");
-                return false;
+                return "Error Creating User";
             }            
+        }
+
+        public static String AttemptLogin(String username, String password)
+        {
+            try
+            {
+                string truePassword = RestfulDBConnection.Retrieve(username + "/password");
+                if (truePassword == password)
+                {
+                    Debug.Write("Successfully logged in user " + username + ".\n");
+                    return "Success";
+                } else
+                {
+                    Debug.Write("Username or password provided was incorrect: " + username + ", " + password + ".\n");
+                    return "Incorrect Username/Password";
+                }               
+            }
+            catch (Exception e)
+            {
+                Debug.Write("Error attempting login: " + e.Message + "\n");
+                return "Error Attempting Login";
+            }
         }
 
     }
