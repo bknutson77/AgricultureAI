@@ -18,6 +18,16 @@ namespace AgricultureAI
 {
     public class Startup
     {
+        /// <summary>
+        /// This is the main starting point of the server program.
+        /// </summary>
+        /// <example>
+        /// Usage:
+        /// @code
+        ///     Is Doxygen gonna see this I wonder...
+        /// @endcode
+        /// </example>
+        /// <param name="configuration">An IConfiguration object</param>
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;

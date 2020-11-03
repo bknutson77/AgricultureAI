@@ -1,0 +1,5 @@
+var namespace_agriculture_a_i_1_1_pages_1_1shared =
+[
+    [ "Website_html_shared__Layout", "class_agriculture_a_i_1_1_pages_1_1shared_1_1_website__html__shared_____layout.html", "class_agriculture_a_i_1_1_pages_1_1shared_1_1_website__html__shared_____layout" ],
+    [ "Website_html_shared__ValidationScriptsPartial", "class_agriculture_a_i_1_1_pages_1_1shared_1_1_website__html__shared_____validation_scripts_partial.html", "class_agriculture_a_i_1_1_pages_1_1shared_1_1_website__html__shared_____validation_scripts_partial" ]
+];
