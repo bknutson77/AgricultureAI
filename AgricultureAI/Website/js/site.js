@@ -94,3 +94,15 @@ function submitRegister() {
         }
     });
 }
+
+//Module Home 
+
+function module1Redirect() {
+    document.location = "Module_1";
+}
+
+//Redirects from Machne Learning / AI to Module Home
+
+function returnToModuleHome() {
+    document.location = "ModuleHome";
+}
