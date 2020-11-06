@@ -5,9 +5,50 @@
 }
 
 <div class="text-center">
-    <div class="flexColumn">
-        <button class="agAIButton" onclick="module1Redirect()">Module 1</button>
-        <button class="agAIButton">Module 2</button>
-        <button class="agAIButton">Module 3</button>
+    
+    <div class="flexColumn mt-1">
+        <div class="card agAICard">
+            <div class="card-header agAICardHeader">Learn About AI!</div>
+            <div class="card-body agAICardBody">
+                <div class="flexRow">
+                    <span>
+                        Artificial intelligence has endless applications.  Learn how scientists aim to help track crop growth and health.
+                    </span>
+                </div>
+                <button class="agAIButton" onclick="module1Redirect()">Module 1</button>
+
+            </div>
+        </div>
     </div>
+
+    <div class="flexColumn mt-4">
+        <div class="card agAICard">
+            <div class="card-header agAICardHeader">Play a Game: You vs. AI</div>
+            <div class="card-body agAICardBody">
+                <div class="flexRow">
+                    <span>
+                        Think you can identify unhealthy plants? Test your wits against the AgricultureAI algorithm, and witness it in action!
+                    </span>
+                </div>
+                <button class="agAIButton">Module 2</button> <!-- add onclick to send to different part of app-->
+
+            </div>
+        </div>
+    </div>
+
+    <div class="flexColumn mt-4">
+        <div class="card agAICard">
+            <div class="card-header agAICardHeader">Train Your Own AI</div>
+            <div class="card-body agAICardBody">
+                <div class="flexRow">
+                    <span>
+                        Train your own algorithm and watch it grow! The more you teach it, the smarter it will become.
+                    </span>
+                </div>
+                <button class="agAIButton">Module 3</button> <!-- add onclick to send to different part of app-->
+
+            </div>
+        </div>
+    </div>
+
 </div>
