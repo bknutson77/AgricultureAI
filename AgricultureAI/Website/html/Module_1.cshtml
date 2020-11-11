@@ -1,0 +1,46 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Machine Learning";
+}
+
+<div class="text-center">
+    <div class="flexColumn">
+        <div class="card agAICard agAIWideCardOverride">
+            <div class="card-header agAICardHeader">Learn About AI!</div>
+            <div class="card-body agAICardBody">
+                <div class="flexRow">
+                    <span>
+                        <p>Artificial intelligence is intelligence that is demonstrated by a machine. Researchers use artificial intelligence, or AI,
+                        to try and mimic natural intelligence, which is possessed by humans and animals. Intelligence is hard to define exactly,
+                        but in general, an intelligent being is something that perceives its environment, extracts information, and uses that
+                        information to maximize its chance of successfully completing its goals. For this effort we have created an AI model that can 
+                        analyze pictures of crops and identify whether the plant is sick or healthy. There are many different techniques used to create 
+                        a model, and the one we are using is called machine learning.</p>
+
+                        <p>Machine learning is the study of the set of algorithms that use statistical methods to find patterns in data. Machine learning
+                        algorithms take in data, analyze it, and identify patterns and correlations in the data that would normally be difficult or
+                        impossible for a human to identify. The trained models can then be used to analyze new data of the same type and provide
+                        information about it. To create a computer program that is capable of making such predictions and
+                        decisions, the program undergoes an initial training period with a large amount of data. In the training period, the program
+                        uses the machine learning algorithms to analyze the data, and it learns to detect patterns within it. The model is then evaluated,
+                        and it may go through additional training and evaluation before it is deployed to make decisions in the real world. Although
+                        algorithms and processes vary, the creation of the model usually follows this process: data collection, data preparation, training,
+                        evaluation, and fine-tuning.</p>
+
+                        <p>In this application, the machine learning model is being trained using a set of prepared images of crops. Each plant image will be 
+                        labelled as "healthy" or "unhealthy," and the model will train itself to identify the visual differences between the healthy and 
+                        unhealthy plants. The model will then be evaluated using additional labeled images to see how effective it is. The model will 
+                        then undergo additional training and evaluation periods in order to improve itself. Once this fine-tuning period has been completed, 
+                        the model is ready to use. A new crop image can be given to the model, and it now will be able to identify whether the plant is 
+                        healthy or unhealthy. Although no model is perfect at identification, with enough training they can become as good as, or even 
+                        better than, a person. Using AI allows farmers to spend less times on finding the sick plants and more time on helping to cure them, 
+                        leading to better crops and bigger yields.</p>
+                    </span>
+                </div>
+
+                <button id="machineLearningGoBack" class="agAIButton" onclick="returnToModuleHome()">Go Back</button>
+            </div>
+        </div>
+    </div>
+</div>

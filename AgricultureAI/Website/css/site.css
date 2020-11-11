@@ -109,6 +109,11 @@ body {
     width: 500px;
     border-radius: 50px !important;
 }
+
+.agAIWideCardOverride{
+    width: 750px !important;
+}
+
 .agAICardHeader {
     background-color: black;
     color: white;
