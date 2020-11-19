@@ -64,6 +64,13 @@ namespace AgricultureAI.Pages
             return new JsonResult(UserManagement.AttemptRegister(name, email, occupation, plantExpert, username, password));
         }
 
+        // Attempt Getting Image Keys:
+        public JsonResult OnGetImageKeys()
+        {
+            // Attempt to return the response:
+            return new JsonResult(GroundTruth.GetImageKeys());
+        }
+
         // Attempt AI Prediction:
         public JsonResult OnGetAIPrediction()
         {
@@ -75,7 +82,7 @@ namespace AgricultureAI.Pages
             string[] queryParams = queryString.Split("&");
             string imageURL = queryParams[1].Replace("imageURL=", "");
 
-            // Attempt the login and return the response:
+            // Attempt to return the response:
             return new JsonResult(MLModel.Predict(imageURL).Prediction);
         }
 
@@ -90,7 +97,7 @@ namespace AgricultureAI.Pages
             string[] queryParams = queryString.Split("&");
             string imageURL = queryParams[1].Replace("imageURL=", "");
 
-            // Attempt the login and return the response:
+            // Attempt to return the response:
             return new JsonResult(GroundTruth.Lookup(imageURL));
         }
     }

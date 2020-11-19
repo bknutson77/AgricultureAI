@@ -43,5 +43,11 @@ namespace AgricultureAI.MachineLearning
         {
             return GroundTruthDictionary[url];
         }
+
+        public static string[] GetImageKeys()
+        {
+            string[] returnArray = GroundTruthDictionary.Keys.ToArray();
+            return returnArray;
+        }
     }
 }

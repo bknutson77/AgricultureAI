@@ -107,6 +107,20 @@ function returnToModuleHome() {
 
 
 /* AI/Machine Learning Functions */
+function getImageKeys() {
+    $.ajax({
+        url: "Login/?handler=ImageKeys",
+        type: 'GET',
+        success: function (result) {
+            console.log(result);
+        },
+        error: function (error) {
+            alert("Request To Acquire Image Keys Through Server Failed");
+            console.log(error);
+        }
+    });
+}
+
 function getMLPrediction(imageURL) {
     var requestString = "&imageURL=" + imageURL;
     $.ajax({
