@@ -95,14 +95,58 @@ function submitRegister() {
     });
 }
 
-//Module Home 
 
-function module1Redirect() {
-    document.location = "Module_1";
+/* Module Home Functions */
+function learnAboutAIRedirect() {
+    document.location = "LearnAboutAI";
 }
-
-//Redirects from Machne Learning / AI to Module Home
 
 function returnToModuleHome() {
     document.location = "ModuleHome";
+}
+
+
+/* AI/Machine Learning Functions */
+function getImageKeys() {
+    $.ajax({
+        url: "Login/?handler=ImageKeys",
+        type: 'GET',
+        success: function (result) {
+            console.log(result);
+        },
+        error: function (error) {
+            alert("Request To Acquire Image Keys Through Server Failed");
+            console.log(error);
+        }
+    });
+}
+
+function getMLPrediction(imageURL) {
+    var requestString = "&imageURL=" + imageURL;
+    $.ajax({
+        url: "Login/?handler=AIPrediction" + requestString,
+        type: 'GET',
+        success: function (result) {
+            console.log(result);
+        },
+        error: function (error) {
+            alert("Request To Acquire Machine Learning Prediction Through Server Failed");
+            console.log(error);
+        }
+    });
+}
+
+function getGroundTruth(imageURL) {
+    var requestString = "&imageURL=" + imageURL;
+    $.ajax({
+        url: "Login/?handler=GroundTruth" + requestString,
+        type: 'GET',
+        success: function (result) {
+            console.log(result);
+        },
+        error: function (error) {
+            alert("Request To Acquire Ground Truth Through Server Failed");
+            console.log(error);
+        }
+    });
 }
