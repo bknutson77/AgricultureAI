@@ -1,0 +1,58 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Play A Game";
+}
+
+<div class="text-center">
+    <div class="flexColumn">
+        <div class="card agAICard agAIWideCardOverride">
+            <div class="card-header agAICardHeader">Play a Game: You vs AI</div>
+            <div class="card-body agAICardBody">
+
+                <!-- Scorekeeping -->
+                <div class="flexRow flexStartOverride">
+                    <label>Your Score:</label>
+                    <span id="yourScore"></span>
+                </div>
+                <div class="flexRow flexStartOverride">
+                    <label>AgricultureAI Score:</label>
+                    <span id="aiScore"></span>
+                </div>
+
+                <!-- Line Divider -->
+                <hr />
+
+                <!-- Plant Image -->
+                <div class="flexRow">
+                    <div class="flexColumn aiAIPlantImageContainer">
+                        <div class="flexRow">
+                            <h5 id="imageNumber">Image 0</h5>
+                        </div>
+                        <div class="flexRow">
+                            <img id="plantImage" class="agAIPlantImage" src="https://firebasestorage.googleapis.com/v0/b/agricultureai-15ce0.appspot.com/o/DSC00026.JPG?alt=media" />
+                        </div>
+                    </div>
+                    <div class="flexColumn ml-3">
+                        <div class="flexRow">
+                            <h6>Cast your vote and submit.</h6>
+                        </div>
+                        <div class="flexRow flexStartOverride ml-5">
+                            <input type="radio" id="healthy" name="health" value="healhy">
+                            <label for="healthy" class="aiAIRadioLabel">Healthy</label>
+                        </div>
+                        <div class="flexRow flexStartOverride ml-5">
+                            <input type="radio" id="unlhealthy" name="health" value="unlhealthy">
+                            <label for="unlhealthy" class="aiAIRadioLabel">Unhealthy</label>
+                        </div>
+                        <div class="flexRow">
+                            <button id="castVote" class="agAIButton" >Submit</button>
+                        </div>
+                    </div>
+                </div>
+                
+
+            </div>
+        </div>
+    </div>
+</div>

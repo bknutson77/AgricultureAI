@@ -1,0 +1,25 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Play A Game";
+}
+
+<div class="text-center">
+    <div class="flexColumn">
+        <div class="card agAICard agAIWideCardOverride">
+            <div class="card-header agAICardHeader">Play a Game: You vs AI</div>
+            <div class="card-body agAICardBody">
+                <div class="flexRow">
+                    <span>
+                        <h6>It’s you vs the machine! So gear up!</h6>
+                        <p>
+                            The rules are simple, 10 images of plants will be displayed one at a time.  Your job is to identify whether the plant is healthy or unhealthy. Once you’ve voted, AgricultureAI will use artificial intelligence to predict the plants’ health. Both of your results will be displayed next to the real answer.
+                        </p>
+                    </span>
+                </div>
+
+                <button id="playAGameStartGame" class="agAIButton" onclick="continueToGameRedirect()">Start Game</button>
+            </div>
+        </div>
+    </div>
+</div>

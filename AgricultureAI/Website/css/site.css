@@ -89,6 +89,7 @@ body {
     flex-wrap: nowrap;
     justify-content: center;
     align-items: center;
+    width: 100%;
 }
 .flexColumn {
     display: flex;
@@ -97,6 +98,9 @@ body {
     flex-wrap: nowrap;
     justify-content: center;
     align-items: center;
+}
+.flexStartOverride {
+    justify-content: flex-start !important;
 }
 .flexEndOverride {
     justify-content: flex-end !important;
@@ -158,6 +162,18 @@ body {
 
 .errorMessage {
     color: red;
+}
+
+.agAIPlantImage {
+    width: 500px;
+}
+
+.aiAIPlantImageContainer {
+    width: 500px;
+}
+
+.aiAIRadioLabel {
+    margin: 0px 0px 0px 5px !important;
 }
 
 

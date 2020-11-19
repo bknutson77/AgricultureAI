@@ -101,6 +101,14 @@ function learnAboutAIRedirect() {
     document.location = "LearnAboutAI";
 }
 
+function playAGameRedirect() {
+    document.location = "GameRules";
+}
+
+function continueToGameRedirect() {
+    document.location = "GamePlay";
+}
+
 function returnToModuleHome() {
     document.location = "ModuleHome";
 }
