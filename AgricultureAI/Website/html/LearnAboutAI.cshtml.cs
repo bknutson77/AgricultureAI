@@ -8,11 +8,11 @@ using Microsoft.Extensions.Logging;
 
 namespace AgricultureAI.Pages
 {
-    public class Module_1_Model : PageModel
+    public class LearnAboutAIModel : PageModel
     {
         private readonly ILogger<IndexModel> _logger;
 
-        public Module_1_Model(ILogger<IndexModel> logger)
+        public LearnAboutAIModel(ILogger<IndexModel> logger)
         {
             _logger = logger;
         }
