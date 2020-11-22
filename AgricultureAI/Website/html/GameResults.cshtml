@@ -1,0 +1,41 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Game Results";
+}
+
+<div class="text-center">
+    <div class="flexColumn">
+        <div class="card agAICard agAIWideCardOverride">
+            <div class="card-header agAICardHeader">Play a Game: You vs AI</div>
+            <div class="card-body agAICardBody">
+                
+                <div class="flexRow">
+                    <!-- Scorekeeping -->
+                    <div class="flexRow flexStartOverride">
+                        <label>Your Score:</label>
+                        <span id="yourScore"></span>
+                    </div>
+                    <br /> <!--Why can I not get the ai score on a new line??????????????????????????-->
+                    <div class="flexRow flexStartOverride">
+                        <label>AgricultureAI Score:</label>
+                        <span id="aiScore"></span>
+                    </div>
+                </div>
+
+                <div class="flexRow">
+                    <span>
+                        <h1>Congratulations!</h1>
+                        <p>
+                            You beat the machine!
+                        </p>
+                    </span>
+                </div>
+
+                <button id="playAGameStartGame" class="agAIButton" onclick="continueToGameRedirect()">Play Again</button>
+                <button id="playAGameStartGame" class="agAIButton" onclick="returnToModuleHome()">Return to Home</button>
+
+            </div>
+        </div>
+    </div>
+</div>

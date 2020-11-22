@@ -158,3 +158,19 @@ function getGroundTruth(imageURL) {
         }
     });
 }
+
+//start functions to possibly rename
+
+function continueToGameResults() {
+    document.location = "GameResults";
+}
+
+function generatRandomNumber(maxNumber) {
+    return Math.floor(Math.random() * Math.floor(maxNumber));
+}
+
+//takes as input a string denoting a file and returns a URL for an image.
+
+function generateURL(imageIndex) {
+    return "https://firebasestorage.googleapis.com/v0/b/agricultureai-15ce0.appspot.com/o/" + imageIndex + "?alt = media"
+}
