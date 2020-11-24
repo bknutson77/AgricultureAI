@@ -9,19 +9,19 @@
         <div class="card agAICard agAIWideCardOverride">
             <div class="card-header agAICardHeader">Play a Game: You vs AI</div>
             <div class="card-body agAICardBody">
-                
-                <div class="flexRow">
-                    <!-- Scorekeeping -->
-                    <div class="flexRow flexStartOverride">
-                        <label>Your Score:</label>
-                        <span id="yourScore"></span>
-                    </div>
-                    <br /> <!--Why can I not get the ai score on a new line??????????????????????????-->
-                    <div class="flexRow flexStartOverride">
-                        <label>AgricultureAI Score:</label>
-                        <span id="aiScore"></span>
-                    </div>
+
+                <!-- Scorekeeping -->
+                <div class="flexRow flexStartOverride">
+                    <label>Your Score:</label>
+                    <span id="yourScore"></span>
                 </div>
+                <div class="flexRow flexStartOverride">
+                    <label>AgricultureAI Score:</label>
+                    <span id="aiScore"></span>
+                </div>
+
+                <!-- Line Divider -->
+                <hr />
 
                 <div class="flexRow">
                     <span>
@@ -33,7 +33,7 @@
                 </div>
 
                 <button id="playAGameStartGame" class="agAIButton" onclick="continueToGameRedirect()">Play Again</button>
-                <button id="playAGameStartGame" class="agAIButton" onclick="returnToModuleHome()">Return to Home</button>
+                <button id="playAGameEndGame" class="agAIButton" onclick="returnToModuleHome()">Return to Home</button>
 
             </div>
         </div>
