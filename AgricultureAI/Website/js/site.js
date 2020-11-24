@@ -105,16 +105,16 @@ function playAGameRedirect() {
     document.location = "GameRules";
 }
 
-function continueToGameRedirect() {
-    document.location = "GamePlay";
-}
-
 function returnToModuleHome() {
     document.location = "ModuleHome";
 }
 
 
 /* AI/Machine Learning Functions */
+function generateURL(imageIndex) { // takes as input a string denoting a file and returns a URL for an image
+    return "https://firebasestorage.googleapis.com/v0/b/agricultureai-15ce0.appspot.com/o/" + imageIndex + "?alt = media"
+}
+
 function getImageKeys() {
     $.ajax({
         url: "Login/?handler=ImageKeys",
@@ -159,7 +159,16 @@ function getGroundTruth(imageURL) {
     });
 }
 
-//start functions to possibly rename
+
+/* Play a Game Module */
+
+// -- Variables:
+var voteFlag = true;
+
+// -- Functions:
+function continueToGameRedirect() {
+    document.location = "GamePlay";
+}
 
 function continueToGameResults() {
     document.location = "GameResults";
@@ -169,8 +178,13 @@ function generatRandomNumber(maxNumber) {
     return Math.floor(Math.random() * Math.floor(maxNumber));
 }
 
-//takes as input a string denoting a file and returns a URL for an image.
-
-function generateURL(imageIndex) {
-    return "https://firebasestorage.googleapis.com/v0/b/agricultureai-15ce0.appspot.com/o/" + imageIndex + "?alt = media"
+function castVoteOrContinue() {
+    voteFlag = !voteFlag;
+    if (voteFlag) {
+        document.getElementById("castVoteDiv").style.display = "contents";
+        document.getElementById("votesAreInDiv").style.display = "none";
+    } else {
+        document.getElementById("castVoteDiv").style.display = "none";
+        document.getElementById("votesAreInDiv").style.display = "contents";
+    }
 }

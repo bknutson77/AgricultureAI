@@ -34,19 +34,41 @@
                         </div>
                     </div>
                     <div class="flexColumn ml-3">
+
+                        <div id="castVoteDiv">
+                            <div class="flexRow">
+                                <h6>Cast your vote and submit.</h6>
+                            </div>
+                            <div class="flexRow flexStartOverride ml-5">
+                                <input type="radio" id="healthy" name="health" value="healhy">
+                                <label for="healthy" class="aiAIRadioLabel">Healthy</label>
+                            </div>
+                            <div class="flexRow flexStartOverride ml-5">
+                                <input type="radio" id="unlhealthy" name="health" value="unlhealthy">
+                                <label for="unlhealthy" class="aiAIRadioLabel">Unhealthy</label>
+                            </div>
+                        </div>
+
+                        <div id="votesAreInDiv">
+                            <div class="flexRow">
+                                <h6>Votes are in!</h6>
+                            </div>
+                            <div class="flexRow flexStartOverride">
+                                <label>Ground Truth:</label>
+                                <label id="groundTruthPrediction"></label>
+                            </div>
+                            <div class="flexRow flexStartOverride">
+                                <label>AI Prediction:</label>
+                                <label id="aiPrediction"></label>
+                            </div>
+                            <div class="flexRow flexStartOverride">
+                                <label>Your Prediction:</label>
+                                <label id="yourPrediction"></label>
+                            </div>
+                        </div>
+                        
                         <div class="flexRow">
-                            <h6>Cast your vote and submit.</h6>
-                        </div>
-                        <div class="flexRow flexStartOverride ml-5">
-                            <input type="radio" id="healthy" name="health" value="healhy">
-                            <label for="healthy" class="aiAIRadioLabel">Healthy</label>
-                        </div>
-                        <div class="flexRow flexStartOverride ml-5">
-                            <input type="radio" id="unlhealthy" name="health" value="unlhealthy">
-                            <label for="unlhealthy" class="aiAIRadioLabel">Unhealthy</label>
-                        </div>
-                        <div class="flexRow">
-                            <button id="castVote" class="agAIButton" onclick="continueToGameResults()" >Submit</button>
+                            <button id="castVoteOrContinue" class="agAIButton" onclick="castVoteOrContinue()">Submit</button>
                         </div>
                     </div>
                 </div>

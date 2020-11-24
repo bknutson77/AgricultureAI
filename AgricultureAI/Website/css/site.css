@@ -82,6 +82,10 @@ body {
 
 
 /* Global CSS */
+label {
+    margin-bottom: 0px !important;
+}
+
 .flexRow {
     display: flex;
     flex-basis: auto;
@@ -177,3 +181,7 @@ body {
 }
 
 
+/* Gameplay CSS */
+#votesAreInDiv {
+    display: none;
+}
