@@ -1,7 +1,7 @@
 ﻿@page
 @model IndexModel
 @{
-    ViewData["Title"] = "Play A Game";
+    ViewData["Title"] = "GamePlay";
 }
 
 <div class="text-center">
@@ -13,11 +13,11 @@
                 <!-- Scorekeeping -->
                 <div class="flexRow flexStartOverride">
                     <label>Your Score:</label>
-                    <span id="yourScore"></span>
+                    <span id="yourScore" class="ml-1">0</span>
                 </div>
                 <div class="flexRow flexStartOverride">
                     <label>AgricultureAI Score:</label>
-                    <span id="aiScore"></span>
+                    <span id="aiScore" class="ml-1">0</span>
                 </div>
 
                 <!-- Line Divider -->
@@ -27,10 +27,10 @@
                 <div class="flexRow">
                     <div class="flexColumn aiAIPlantImageContainer">
                         <div class="flexRow">
-                            <h5 id="imageNumber">Image 0</h5>
+                            <h5 id="imageNumber">Image 1</h5>
                         </div>
                         <div class="flexRow">
-                            <img id="plantImage" class="agAIPlantImage" src="https://firebasestorage.googleapis.com/v0/b/agricultureai-15ce0.appspot.com/o/DSC00026.JPG?alt=media" />
+                            <img id="plantImage" class="agAIPlantImage" src=""/>
                         </div>
                     </div>
                     <div class="flexColumn ml-3">

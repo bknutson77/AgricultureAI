@@ -3,6 +3,17 @@
 
 // Write your Javascript code.
 
+
+/* Functions that need to be called on every reload */
+function updatePlantImage() {
+    var plantImage = localStorage.getItem("plantImage");
+    if (plantImage !== null && plantImage !== undefined) {
+        $("#plantImage").attr("src", plantImage);
+    }
+}
+updatePlantImage();
+
+
 /* Current User */
 class CurrentUser {
     constructor(name, username) {
@@ -116,47 +127,59 @@ function generateURL(imageIndex) { // takes as input a string denoting a file an
 }
 
 function getImageKeys() {
-    $.ajax({
-        url: "Login/?handler=ImageKeys",
+    var response = $.ajax({
+        url: "GameRules/?handler=ImageKeys",
         type: 'GET',
+        async: false,
         success: function (result) {
             console.log(result);
+            return result;
         },
         error: function (error) {
             alert("Request To Acquire Image Keys Through Server Failed");
             console.log(error);
+            return error;
         }
     });
+    return response.responseJSON;
 }
 
 function getMLPrediction(imageURL) {
     var requestString = "&imageURL=" + imageURL;
-    $.ajax({
-        url: "Login/?handler=AIPrediction" + requestString,
+    var response = $.ajax({
+        url: "GamePlay/?handler=AIPrediction" + requestString,
         type: 'GET',
+        async: false,
         success: function (result) {
             console.log(result);
+            return result;
         },
         error: function (error) {
             alert("Request To Acquire Machine Learning Prediction Through Server Failed");
             console.log(error);
+            return result;
         }
     });
+    return response;
 }
 
 function getGroundTruth(imageURL) {
     var requestString = "&imageURL=" + imageURL;
-    $.ajax({
-        url: "Login/?handler=GroundTruth" + requestString,
+    var response = $.ajax({
+        url: "GamePlay/?handler=GroundTruth" + requestString,
         type: 'GET',
+        async: false,
         success: function (result) {
             console.log(result);
+            return result;
         },
         error: function (error) {
             alert("Request To Acquire Ground Truth Through Server Failed");
             console.log(error);
-        }
+            return result;
+        }        
     });
+    return response;
 }
 
 
@@ -166,7 +189,27 @@ function getGroundTruth(imageURL) {
 var voteFlag = true;
 
 // -- Functions:
+function getRandomImage() {
+    var randomNumber = generatRandomNumber(100);
+    var imageKeys = JSON.parse(localStorage.getItem("imageKeys"));
+    var chosenImageKey = imageKeys[randomNumber];
+    var imageURL = "https://firebasestorage.googleapis.com/v0/b/agricultureai-15ce0.appspot.com/o/" + chosenImageKey + "?alt=media";
+    return imageURL;
+}
+
+function initializeGame() {
+
+    // Get and store the image keys:
+    var imageKeys = getImageKeys();
+    localStorage.setItem("imageKeys", JSON.stringify(imageKeys));
+
+    // Initialize the plant image to a random image:
+    var randomImage = getRandomImage();
+    localStorage.setItem("plantImage", randomImage);
+}
+
 function continueToGameRedirect() {
+    initializeGame();
     document.location = "GamePlay";
 }
 
