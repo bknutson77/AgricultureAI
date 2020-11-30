@@ -39,6 +39,9 @@ namespace AgricultureAI
             // Initialize Machine Learning Components:
             MLModel.CreatePredictionEngine();
             GroundTruth.CreateGroundTruthLookup();
+
+            // Get the Machine Learning Warmed Up:
+            MLModel.Predict("https://firebasestorage.googleapis.com/v0/b/agricultureai-15ce0.appspot.com/o/DSC00025.JPG?alt=media");
         }
 
         public IConfiguration Configuration { get; }
@@ -75,13 +78,6 @@ namespace AgricultureAI
             {
                 endpoints.MapRazorPages();
             });
-        }
-
-        public void RunStartupTests()
-        {
-            // Testing Machine Learning:
-            //var predictionResult = MLModel.Predict(@"https://firebasestorage.googleapis.com/v0/b/agricultureai-15ce0.appspot.com/o/IMG_6700.Jpeg?alt=media");
-            //Debug.Write($"Predicted Label value {predictionResult.Prediction} \nPredicted Label scores: [{String.Join(",", predictionResult.Score)}]\n");
         }
     }
 }

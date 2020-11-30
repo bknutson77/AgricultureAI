@@ -8,19 +8,11 @@
 function updatePlantImage() {
     var plantImage = localStorage.getItem("plantImage");
     if (plantImage !== null && plantImage !== undefined) {
-        $("#plantImage").attr("src", plantImage);
+        $("#plantImage").attr("src", stitchImageURL(plantImage));
     }
 }
 updatePlantImage();
 
-
-/* Current User */
-class CurrentUser {
-    constructor(name, username) {
-        this.username = username;
-    }
-}
-var currentUser = new CurrentUser("");
 
 /* Login/Register/Continue-As-Guest Functions */
 function loginRedirect() {
@@ -34,7 +26,7 @@ function registerRedirect() {
 function continueAsGuestRedirect() {
 
     // Set user information:
-    currentUser.username = "Guest";
+    localStorage.setItem("currentUser","Guest");
 
     // Advance and confirm:
     document.location = "ModuleHome";
@@ -55,7 +47,8 @@ function submitLogin() {
             if (result == "Success") {
 
                 // Set user information:
-                currentUser.username = $('#loginUsername').val();
+                var currentUser = $('#loginUsername').val();
+                localStorage.setItem("currentUser", currentUser);
 
                 // Advance and confirm:
                 document.location = "ModuleHome";
@@ -88,7 +81,8 @@ function submitRegister() {
             console.log(result);
             if (result == "Success") {
                 // Set user information:
-                currentUser.username = $('#registerUsername').val();
+                var currentUser = $('#registerUsername').val();
+                localStorage.setItem("currentUser", currentUser);
 
                 // Advance and confirm:
                 document.location = "ModuleHome";
@@ -122,8 +116,8 @@ function returnToModuleHome() {
 
 
 /* AI/Machine Learning Functions */
-function generateURL(imageIndex) { // takes as input a string denoting a file and returns a URL for an image
-    return "https://firebasestorage.googleapis.com/v0/b/agricultureai-15ce0.appspot.com/o/" + imageIndex + "?alt = media"
+function stitchImageURL(imageKey) {
+    return "https://firebasestorage.googleapis.com/v0/b/agricultureai-15ce0.appspot.com/o/" + imageKey + "?alt=media";
 }
 
 function getImageKeys() {
@@ -160,7 +154,7 @@ function getMLPrediction(imageURL) {
             return result;
         }
     });
-    return response;
+    return response.responseJSON;
 }
 
 function getGroundTruth(imageURL) {
@@ -179,7 +173,11 @@ function getGroundTruth(imageURL) {
             return result;
         }        
     });
-    return response;
+    if (response.responseJSON == true) {
+        return "Healthy";
+    } else {
+        return "Unhealthy";
+    }
 }
 
 
@@ -187,14 +185,16 @@ function getGroundTruth(imageURL) {
 
 // -- Variables:
 var voteFlag = true;
+var imageCount = 1;
+var currentPlantImage = localStorage.getItem("plantImage");
+var yourScore = 0;
+var aiScore = 0;
 
 // -- Functions:
 function getRandomImage() {
     var randomNumber = generatRandomNumber(100);
     var imageKeys = JSON.parse(localStorage.getItem("imageKeys"));
-    var chosenImageKey = imageKeys[randomNumber];
-    var imageURL = "https://firebasestorage.googleapis.com/v0/b/agricultureai-15ce0.appspot.com/o/" + chosenImageKey + "?alt=media";
-    return imageURL;
+    return imageKeys[randomNumber];
 }
 
 function initializeGame() {
@@ -214,20 +214,81 @@ function continueToGameRedirect() {
 }
 
 function continueToGameResults() {
-    document.location = "GameResults";
+
+    if (yourScore < aiScore) {
+        document.getElementById("gameResultsHeader").innerHTML = "You Lost";
+        document.getElementById("gameResultsSummary").innerHTML = "So sorry, but the AI correctly identified more images than you.";
+    } else if (yourScore == aiScore) {
+        document.getElementById("gameResultsHeader").innerHTML = "You Tied!";
+        document.getElementById("gameResultsSummary").innerHTML = "Not bad! You're as smart as the computer.";
+    } else {
+        document.getElementById("gameResultsHeader").innerHTML = "You Won!";
+        document.getElementById("gameResultsSummary").innerHTML = "Wow great job! You beat the machine!";
+    }
+
+    document.getElementById("gamePlayDiv").style.display = "none";
+    document.getElementById("gameResultsDiv").style.display = "contents";
 }
 
 function generatRandomNumber(maxNumber) {
     return Math.floor(Math.random() * Math.floor(maxNumber));
 }
 
+function updateVote() {
+    $("#castVoteOrContinue").prop("disabled", false);
+}
+
 function castVoteOrContinue() {
+
     voteFlag = !voteFlag;
     if (voteFlag) {
-        document.getElementById("castVoteDiv").style.display = "contents";
-        document.getElementById("votesAreInDiv").style.display = "none";
+
+        if (imageCount == 10) {
+            continueToGameResults();
+        } else {
+            // Increase Count:
+            imageCount++;
+
+            // Update Text Fields:
+            document.getElementById("castVoteDiv").style.display = "contents";
+            document.getElementById("votesAreInDiv").style.display = "none";
+            document.getElementById("imageNumber").innerHTML = "Image " + imageCount;
+            document.getElementById("castVoteOrContinue").innerHTML = "Submit";
+
+            // Update Image:
+            currentPlantImage = getRandomImage();
+            $("#plantImage").attr("src", stitchImageURL(currentPlantImage));
+
+            // Clear Previous Vote:
+            $('input[name="health"]').prop('checked', false);
+            $("#castVoteOrContinue").prop("disabled", true);
+        }            
+
     } else {
+
+        // Acquire Votes and Ground Truth:
+        var userVote = $('input[name="health"]:checked').val();
+        var mlVote = getMLPrediction(stitchImageURL(currentPlantImage));
+        var groundTruth = getGroundTruth(currentPlantImage);
+
+        // Update Scores:
+        if (userVote == groundTruth) {
+            yourScore++;
+        }
+        if (mlVote == groundTruth) {
+            aiScore++;
+        }
+
+        // Update Text Fields:
         document.getElementById("castVoteDiv").style.display = "none";
         document.getElementById("votesAreInDiv").style.display = "contents";
+        document.getElementById("yourScore").innerHTML = yourScore;
+        document.getElementById("aiScore").innerHTML = aiScore;
+        document.getElementById("imageNumber").innerHTML = "Image " + imageCount + " Result";
+        document.getElementById("groundTruthPrediction").innerHTML = groundTruth;
+        document.getElementById("aiPrediction").innerHTML = mlVote;
+        document.getElementById("yourPrediction").innerHTML = userVote;
+        document.getElementById("castVoteOrContinue").innerHTML = "Continue";
     }
+    
 }

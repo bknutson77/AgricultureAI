@@ -14,17 +14,19 @@
                 <div class="flexRow flexStartOverride">
                     <label>Your Score:</label>
                     <span id="yourScore" class="ml-1">0</span>
+                    <span class="ml-1">/ 10</span>
                 </div>
                 <div class="flexRow flexStartOverride">
                     <label>AgricultureAI Score:</label>
                     <span id="aiScore" class="ml-1">0</span>
+                    <span class="ml-1">/ 10</span>
                 </div>
 
                 <!-- Line Divider -->
                 <hr />
 
                 <!-- Plant Image -->
-                <div class="flexRow">
+                <div id="gamePlayDiv" class="flexRow">
                     <div class="flexColumn aiAIPlantImageContainer">
                         <div class="flexRow">
                             <h5 id="imageNumber">Image 1</h5>
@@ -40,11 +42,11 @@
                                 <h6>Cast your vote and submit.</h6>
                             </div>
                             <div class="flexRow flexStartOverride ml-5">
-                                <input type="radio" id="healthy" name="health" value="healhy">
+                                <input type="radio" id="healthy" name="health" value="Healthy" onclick="updateVote()">
                                 <label for="healthy" class="aiAIRadioLabel">Healthy</label>
                             </div>
                             <div class="flexRow flexStartOverride ml-5">
-                                <input type="radio" id="unlhealthy" name="health" value="unlhealthy">
+                                <input type="radio" id="unlhealthy" name="health" value="Unhealthy"  onclick="updateVote()">
                                 <label for="unlhealthy" class="aiAIRadioLabel">Unhealthy</label>
                             </div>
                         </div>
@@ -55,15 +57,15 @@
                             </div>
                             <div class="flexRow flexStartOverride">
                                 <label>Ground Truth:</label>
-                                <label id="groundTruthPrediction"></label>
+                                <label id="groundTruthPrediction" class="ml-1"></label>
                             </div>
                             <div class="flexRow flexStartOverride">
                                 <label>AI Prediction:</label>
-                                <label id="aiPrediction"></label>
+                                <label id="aiPrediction" class="ml-1"></label>
                             </div>
                             <div class="flexRow flexStartOverride">
                                 <label>Your Prediction:</label>
-                                <label id="yourPrediction"></label>
+                                <label id="yourPrediction" class="ml-1"></label>
                             </div>
                         </div>
                         
@@ -73,6 +75,21 @@
                     </div>
                 </div>
                 
+                <div id="gameResultsDiv" class="flexRow" style="display: none">
+
+                    <div class="flexRow">
+                        <span>
+                            <h1 id="gameResultsHeader"></h1>
+                            <p id="gameResultsSummary"></p>
+                        </span>
+                    </div>
+                    
+                    <div class="flexRow">
+                        <button id="playAGameStartGame" class="agAIButton" onclick="continueToGameRedirect()">Play Again</button>
+                        <button id="playAGameEndGame" class="agAIButton" onclick="returnToModuleHome()">Return to Home</button>
+                    </div>
+                    
+                </div>
 
             </div>
         </div>
