@@ -6,6 +6,7 @@ using System.Net;
 using System.Threading.Tasks;
 using AgricultureAI.Persistence;
 using AgricultureAI.Persistence.HigherLevel;
+using AgricultureAI.MachineLearning;
 using MachineLearning;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -35,8 +36,12 @@ namespace AgricultureAI
             // Set Firebase URL:
             RestfulDBConnection.FIREBASE_URL = Configuration["FirebaseURL"];
 
-            // Run Startup Tests:
-            //RunStartupTests();
+            // Initialize Machine Learning Components:
+            MLModel.CreatePredictionEngine();
+            GroundTruth.CreateGroundTruthLookup();
+
+            // Get the Machine Learning Warmed Up:
+            MLModel.Predict("https://firebasestorage.googleapis.com/v0/b/agricultureai-15ce0.appspot.com/o/DSC00025.JPG?alt=media");
         }
 
         public IConfiguration Configuration { get; }
@@ -73,19 +78,6 @@ namespace AgricultureAI
             {
                 endpoints.MapRazorPages();
             });
-        }
-
-        public void RunStartupTests()
-        {
-            // Testing Machine Learning:
-            //var predictionResult = MLModel.Predict(@"https://firebasestorage.googleapis.com/v0/b/agricultureai-15ce0.appspot.com/o/IMG_6700.Jpeg?alt=media");
-            //Debug.Write($"Predicted Label value {predictionResult.Prediction} \nPredicted Label scores: [{String.Join(",", predictionResult.Score)}]\n");
-
-            // Testing Database:
-            if (UserManagement.TestIfUsernameAvailable("bknutson77") == "Available")
-            {
-                UserManagement.AttemptRegister("Ben", "benjk117@gmail.com", "Software Engineer", "no", "bknutson77", "haha1234");
-            }
         }
     }
 }

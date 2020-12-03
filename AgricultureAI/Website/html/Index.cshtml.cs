@@ -4,10 +4,12 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
 using AgricultureAI.Persistence.HigherLevel;
+using AgricultureAI.MachineLearning;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
+using MachineLearning;
 
 namespace AgricultureAI.Pages
 {
@@ -60,6 +62,43 @@ namespace AgricultureAI.Pages
 
             // Attempt the login and return the response:
             return new JsonResult(UserManagement.AttemptRegister(name, email, occupation, plantExpert, username, password));
+        }
+
+        // Attempt Getting Image Keys:
+        public JsonResult OnGetImageKeys()
+        {
+            // Attempt to return the response:
+            return new JsonResult(GroundTruth.GetImageKeys());
+        }
+
+        // Attempt AI Prediction:
+        public JsonResult OnGetAIPrediction()
+        {
+            // Get the query string:
+            var queryStringObject = Request.QueryString;
+            string queryString = queryStringObject.ToString();
+
+            // Parse the query string and extract parameters:
+            string[] queryParams = queryString.Split("&");
+            string imageURL = queryParams[1].Replace("imageURL=", "");
+
+            // Attempt to return the response:
+            return new JsonResult(MLModel.Predict(imageURL).Prediction);
+        }
+
+        // Attempt AI Prediction:
+        public JsonResult OnGetGroundTruth()
+        {
+            // Get the query string:
+            var queryStringObject = Request.QueryString;
+            string queryString = queryStringObject.ToString();
+
+            // Parse the query string and extract parameters:
+            string[] queryParams = queryString.Split("&");
+            string imageURL = queryParams[1].Replace("imageURL=", "");
+
+            // Attempt to return the response:
+            return new JsonResult(GroundTruth.Lookup(imageURL));
         }
     }
 }
