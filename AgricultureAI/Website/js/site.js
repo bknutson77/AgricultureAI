@@ -117,7 +117,38 @@ function returnToModuleHome() {
 
 /* AI/Machine Learning Functions */
 function stitchImageURL(imageKey) {
-    return "https://firebasestorage.googleapis.com/v0/b/agricultureai-15ce0.appspot.com/o/" + imageKey + "?alt=media";
+
+    // Obtain Firebase URL from Server:
+    var firebaseURL = localStorage.getItem("firebaseURL");
+    if (firebaseURL === null || firebaseURL === undefined) {
+        firebaseURL = getFirebaseURL();
+        localStorage.setItem("firebaseURL", firebaseURL);
+    }
+
+    // Parse and obtain the project key alone:
+    var projectKey = firebaseURL.replace("https://", "");
+    projectKey = projectKey.replace(".firebaseio.com/", "");
+
+    // Return the image url:
+    return "https://firebasestorage.googleapis.com/v0/b/" + projectKey + ".appspot.com/o/images_handheld%2F" + imageKey + "?alt=media";
+}
+
+function getFirebaseURL() {
+    var response = $.ajax({
+        url: "GameRules/?handler=FirebaseURL",
+        type: 'GET',
+        async: false,
+        success: function (result) {
+            console.log(result);
+            return result;
+        },
+        error: function (error) {
+            alert("Request To Acquire Firebase URL Through Server Failed");
+            console.log(error);
+            return error;
+        }
+    });
+    return response.responseJSON;
 }
 
 function getImageKeys() {
@@ -191,9 +222,9 @@ var yourScore = 0;
 var aiScore = 0;
 
 // -- Functions:
-function getRandomImage() {
-    var randomNumber = generatRandomNumber(100);
+function getRandomImage() {    
     var imageKeys = JSON.parse(localStorage.getItem("imageKeys"));
+    var randomNumber = generateRandomNumber(imageKeys.length);
     return imageKeys[randomNumber];
 }
 
@@ -230,7 +261,7 @@ function continueToGameResults() {
     document.getElementById("gameResultsDiv").style.display = "contents";
 }
 
-function generatRandomNumber(maxNumber) {
+function generateRandomNumber(maxNumber) {
     return Math.floor(Math.random() * Math.floor(maxNumber));
 }
 
