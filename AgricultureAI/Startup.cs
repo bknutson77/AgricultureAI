@@ -20,14 +20,8 @@ namespace AgricultureAI
     public class Startup
     {
         /// <summary>
-        /// This is the main starting point of the server program.
+        /// This is the starting point of the server program. Here we assign the app a configuration and initialize Machine Learning engines.
         /// </summary>
-        /// <example>
-        /// Usage:
-        /// @code
-        ///     Is Doxygen gonna see this I wonder...
-        /// @endcode
-        /// </example>
         /// <param name="configuration">An IConfiguration object</param>
         public Startup(IConfiguration configuration)
         {
@@ -46,14 +40,21 @@ namespace AgricultureAI
 
         public IConfiguration Configuration { get; }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
+        /// <summary>
+        /// Method to add services to the html container (such as razor pages).
+        /// </summary>
+        /// <param name="services">An IServiceCollection (collection of services)</param>
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().WithRazorPagesRoot("/Website/html");
             services.AddRazorPages();
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+        /// <summary>
+        /// Method to configure the application's exception handling, authorization, and rerouting.
+        /// </summary>
+        /// <param name="app">The application</param>
+        /// <param name="env">The host environment</param>
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())

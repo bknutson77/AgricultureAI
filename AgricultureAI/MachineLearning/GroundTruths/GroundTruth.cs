@@ -11,6 +11,10 @@ namespace AgricultureAI.MachineLearning
         // Dictionary to hold the ground truths:
         public static Dictionary<string, Boolean> GroundTruthDictionary = new Dictionary<string, Boolean>();
 
+        /// <summary>
+        /// Method to create the ground truth lookup dictionary (which is created by parsing the CSV file provided by 
+        /// the research group that took these pictures of plants.
+        /// </summary>
         public static void CreateGroundTruthLookup()
         {
             //they key will be the image name, the boolean plant healthiness true = healthy false = unhealthy
@@ -38,12 +42,25 @@ namespace AgricultureAI.MachineLearning
                 }
             }
         }
-        
-        public static bool Lookup(String url)
+
+        /// <summary>
+        /// Method to look up the ground truth healthy status of a plant in an image.
+        /// </summary>
+        /// <param name="imageKey">The key, or associated name, of the image</param>
+        /// <returns>
+        /// A boolean - true if the plant is healthy, false otherwise.
+        /// </returns>
+        public static bool Lookup(String imageKey)
         {
-            return GroundTruthDictionary[url];
+            return GroundTruthDictionary[imageKey];
         }
 
+        /// <summary>
+        /// Method to obtain the list of image keys (or associated names of each plant image).
+        /// </summary>
+        /// <returns>
+        /// An array of image keys.
+        /// </returns>
         public static string[] GetImageKeys()
         {
             string[] returnArray = GroundTruthDictionary.Keys.ToArray();

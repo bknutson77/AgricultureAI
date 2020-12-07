@@ -5,6 +5,8 @@
 
 
 /* Functions that need to be called on every reload */
+
+// Updates the plant image so that one is always displayed on opening of the game.
 function updatePlantImage() {
     var plantImage = localStorage.getItem("plantImage");
     if (plantImage !== null && plantImage !== undefined) {
