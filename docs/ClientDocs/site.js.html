@@ -1,4 +1,32 @@
-﻿// Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: site.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: site.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>﻿// Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
 // for details on configuring this project to bundle and minify static web assets.
 
 
@@ -12,7 +40,7 @@
  */
 function updatePlantImage() {
     var plantImage = localStorage.getItem("plantImage");
-    if (plantImage !== null && plantImage !== undefined) {
+    if (plantImage !== null &amp;&amp; plantImage !== undefined) {
         $("#plantImage").attr("src", stitchImageURL(plantImage));
     }
 }
@@ -70,7 +98,7 @@ function returnToLoginRegisterHome() {
  * @description Queries the server to check the database for a password match. If the user provided the correct information they will be logged in and forwarded to the module home page, otherwise an error message will be displayed.
  */
 function submitLogin() {
-    var requestString = "&username=" + $('#loginUsername').val() + "&password=" + $('#loginPassword').val();
+    var requestString = "&amp;username=" + $('#loginUsername').val() + "&amp;password=" + $('#loginPassword').val();
     $.ajax({
         url: "Login/?handler=AttemptLogin" + requestString,
         type: 'GET',
@@ -105,12 +133,12 @@ function submitLogin() {
  */
 function submitRegister() {
     var requestString =
-        "&name=" + $('#registerName').val() +
-        "&email=" + $('#registerEmail').val() +
-        "&occupation=" + $('#registerOccupation').val() +
-        "&plantExpert=" + document.getElementById("registerPlantExpert").checked +
-        "&username=" + $('#registerUsername').val() +
-        "&password=" + $('#registerPassword').val();
+        "&amp;name=" + $('#registerName').val() +
+        "&amp;email=" + $('#registerEmail').val() +
+        "&amp;occupation=" + $('#registerOccupation').val() +
+        "&amp;plantExpert=" + document.getElementById("registerPlantExpert").checked +
+        "&amp;username=" + $('#registerUsername').val() +
+        "&amp;password=" + $('#registerPassword').val();
     $.ajax({
         url: "Login/?handler=AttemptRegister" + requestString,
         type: 'GET',
@@ -252,7 +280,7 @@ function getImageKeys() {
  * @returns The predicted label (healthy or unhealthy).
  */
 function getMLPrediction(imageURL) {
-    var requestString = "&imageURL=" + imageURL;
+    var requestString = "&amp;imageURL=" + imageURL;
     var response = $.ajax({
         url: "GamePlay/?handler=AIPrediction" + requestString,
         type: 'GET',
@@ -278,7 +306,7 @@ function getMLPrediction(imageURL) {
  * @returns The ground truth label (healthy or unhealthy).
  */
 function getGroundTruth(imageURL) {
-    var requestString = "&imageURL=" + imageURL;
+    var requestString = "&amp;imageURL=" + imageURL;
     var response = $.ajax({
         url: "GamePlay/?handler=GroundTruth" + requestString,
         type: 'GET',
@@ -356,7 +384,7 @@ function continueToGameRedirect() {
  */
 function continueToGameResults() {
 
-    if (yourScore < aiScore) {
+    if (yourScore &lt; aiScore) {
         document.getElementById("gameResultsHeader").innerHTML = "You Lost";
         document.getElementById("gameResultsSummary").innerHTML = "So sorry, but the AI correctly identified more images than you.";
     } else if (yourScore == aiScore) {
@@ -437,4 +465,26 @@ function castVoteOrContinue() {
         document.getElementById("yourPrediction").innerHTML = userVote;
         document.getElementById("castVoteOrContinue").innerHTML = "Continue";
     }    
-}
+}</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#castVoteOrContinue">castVoteOrContinue</a></li><li><a href="global.html#continueAsGuestRedirect">continueAsGuestRedirect</a></li><li><a href="global.html#continueToGameRedirect">continueToGameRedirect</a></li><li><a href="global.html#continueToGameResults">continueToGameResults</a></li><li><a href="global.html#getFirebaseURL">getFirebaseURL</a></li><li><a href="global.html#getGroundTruth">getGroundTruth</a></li><li><a href="global.html#getImageKeys">getImageKeys</a></li><li><a href="global.html#getMLPrediction">getMLPrediction</a></li><li><a href="global.html#getRandomImage">getRandomImage</a></li><li><a href="global.html#initializeGame">initializeGame</a></li><li><a href="global.html#learnAboutAIRedirect">learnAboutAIRedirect</a></li><li><a href="global.html#loginRedirect">loginRedirect</a></li><li><a href="global.html#playAGameRedirect">playAGameRedirect</a></li><li><a href="global.html#registerRedirect">registerRedirect</a></li><li><a href="global.html#returnToLoginRegisterHome">returnToLoginRegisterHome</a></li><li><a href="global.html#returnToModuleHome">returnToModuleHome</a></li><li><a href="global.html#stitchImageURL">stitchImageURL</a></li><li><a href="global.html#submitLogin">submitLogin</a></li><li><a href="global.html#submitRegister">submitRegister</a></li><li><a href="global.html#updatePlantImage">updatePlantImage</a></li><li><a href="global.html#updateVote">updateVote</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.6</a> on Thu Dec 10 2020 22:18:55 GMT-0600 (Central Standard Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
