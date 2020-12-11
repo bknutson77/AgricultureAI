@@ -11,9 +11,16 @@ namespace AgricultureAI.Persistence
 {
     public static class RestfulDBConnection
     {
-
+        // Firebase URL (set from appsettings.json in Startup.cs):
         public static String FIREBASE_URL { get; set; }
 
+        /// <summary>
+        /// Generic method to retrieve data from the Firebase Realtime Database at a given json address level.
+        /// </summary>
+        /// <param name="address">The address of the json data of interest</param>
+        /// <returns>
+        /// The retrieved value from the request.
+        /// </returns>
         public static String Retrieve(String address)
         {
             // Create a request using the URL and param.
@@ -37,6 +44,15 @@ namespace AgricultureAI.Persistence
             return value;
         }
 
+        /// <summary>
+        /// Generic method to store/patch data to the Firebase Real Time Database.
+        /// </summary>
+        /// <param name="address">The address of the json data of interest</param>
+        /// <param name="param">The parameter beneath the parent address for which to store data</param>
+        /// <param name="value">The value of the parameter to be stored to param</param>
+        /// <returns>
+        /// The status of the store call to Firebase (success or failure).
+        /// </returns>
         public static String Store(String address, String param, String value)
         {
             // Create a request using the URL and param.

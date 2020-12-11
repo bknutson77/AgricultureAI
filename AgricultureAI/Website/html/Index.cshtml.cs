@@ -65,6 +65,13 @@ namespace AgricultureAI.Pages
         }
 
         // Attempt Getting Image Keys:
+        public JsonResult OnGetFirebaseURL()
+        {
+            // Attempt to return the response:
+            return new JsonResult(Persistence.RestfulDBConnection.FIREBASE_URL);
+        }
+
+        // Attempt Getting Image Keys:
         public JsonResult OnGetImageKeys()
         {
             // Attempt to return the response:
