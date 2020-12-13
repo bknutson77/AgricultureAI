@@ -84,7 +84,7 @@ function submitLogin() {
 
                 // Advance and confirm:
                 document.location = "ModuleHome";
-                alert("Success! You have been logged in as: " + currentUser.username);
+                alert("Success! You have been logged in as: " + currentUser);
             } else if (result == "Incorrect Username/Password") {
                 document.getElementById("loginErrorMessage").innerHTML = result;
             } else {
@@ -123,7 +123,7 @@ function submitRegister() {
 
                 // Advance and confirm:
                 document.location = "ModuleHome";
-                alert("Success! You have been registered and logged in as: " + currentUser.username);
+                alert("Success! You have been registered and logged in as: " + currentUser);
             } else if (result == "Username Unavailable") {
                 document.getElementById("registerErrorMessage").innerHTML = result;
             } else {
